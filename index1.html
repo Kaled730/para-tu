@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ti 💗</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Georgia',serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+background:linear-gradient(
+180deg,
+#ffd6e7,
+#ffc0da,
+#ffe6f0
+);
+
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+
+/* Corazones fondo */
+
+.heart{
+
+position:absolute;
+
+font-size:22px;
+
+opacity:0;
+
+animation:
+aparecerCorazon 4s infinite;
+
+pointer-events:none;
+
+}
+
+@keyframes aparecerCorazon{
+
+0%{
+
+opacity:0;
+transform:scale(.5);
+
+}
+
+50%{
+
+opacity:.9;
+transform:scale(1);
+
+}
+
+100%{
+
+opacity:0;
+transform:scale(1.3);
+
+}
+
+}
+
+/* Pantalla sorpresa */
+
+.sorpresa{
+
+position:absolute;
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:25px;
+
+transition:1s;
+z-index:10;
+}
+
+.titulo{
+
+font-size:42px;
+color:#ff4f8b;
+
+text-shadow:
+0 0 10px #ffb5d0;
+}
+
+.boton{
+
+padding:18px 45px;
+
+border:none;
+
+border-radius:40px;
+
+background:
+linear-gradient(
+45deg,
+#ff7fab,
+#ff9dc0
+);
+
+color:white;
+
+font-size:22px;
+
+cursor:pointer;
+
+box-shadow:
+
+0 8px 25px rgba(255,90,150,.35);
+
+transition:.3s;
+}
+
+.boton:hover{
+
+transform:scale(1.08);
+
+}
+
+/* Carta */
+
+.carta{
+
+display:none;
+
+width:90%;
+max-width:700px;
+
+background:#fff5f8;
+
+padding:45px;
+
+border-radius:25px;
+
+box-shadow:
+
+0 0 50px rgba(255,120,160,.3);
+
+position:relative;
+
+animation:aparecer 2s;
+
+border:3px solid #ffd0e2;
+
+background-image:
+
+radial-gradient(
+#ffd4e4 1px,
+transparent 1px
+);
+
+background-size:22px 22px;
+
+overflow:hidden;
+
+}
+
+@keyframes aparecer{
+
+from{
+
+opacity:0;
+transform:scale(.6);
+
+}
+
+to{
+
+opacity:1;
+transform:scale(1);
+
+}
+
+}
+
+.carta h1{
+
+text-align:center;
+
+color:#ff5f96;
+
+font-size:55px;
+
+margin-bottom:25px;
+
+}
+
+.carta p{
+
+font-size:22px;
+
+line-height:1.9;
+
+color:#6b4b56;
+
+margin-bottom:18px;
+
+text-align:center;
+
+}
+
+.decoracion{
+
+font-size:32px;
+text-align:center;
+
+margin:20px;
+
+color:#ff84ad;
+
+}
+
+.firma{
+
+margin-top:35px;
+
+font-size:26px;
+
+color:#ff5f96;
+
+text-align:center;
+
+font-style:italic;
+
+}
+#gatito{
+
+display:none;
+
+position:absolute;
+
+bottom:25px;
+
+right:-120px;
+
+font-size:75px;
+
+animation:
+entrarGatito 3s forwards;
+
+}
+
+@keyframes entrarGatito{
+
+0%{
+
+right:-120px;
+transform:rotate(-10deg);
+
+}
+
+60%{
+
+right:80px;
+transform:rotate(10deg);
+
+}
+
+100%{
+
+right:45px;
+transform:rotate(0deg);
+
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="corazones"></div>
+
+<div class="sorpresa" id="inicio">
+
+<h1 class="titulo">
+Para alguien especial 💌
+</h1>
+
+<button class="boton"
+onclick="mostrarCarta()">
+
+Toca aquí ✨
+
+</button>
+
+</div>
+
+<div class="carta"
+id="carta">
+
+<h1>Para ti 💗</h1>
+
+<div class="decoracion">
+🌸 💕 🌸
+</div>
+
+<p>
+
+Desde que llegaste,
+los días normales
+tienen algo más bonito.
+
+</p>
+
+<p>
+
+Tu sonrisa,
+tu forma de ser,
+y esos pequeños momentos
+que parecen simples,
+se vuelven especiales.
+
+</p>
+
+<p>
+
+Gracias por existir,
+por estar,
+y por iluminar
+más de lo que imaginas.
+
+</p>
+
+<p>
+
+Te elegiría
+una y mil veces.
+
+</p>
+
+<div class="decoracion">
+
+💕 ✨ 💕 ✨ 💕
+
+</div>
+
+<div class="firma">
+
+Con cariño 💖
+
+</div>
+
+</div>
+
+<script>
+
+function mostrarCarta(){
+
+document
+.getElementById("inicio")
+.style.opacity="0";
+
+setTimeout(()=>{
+
+document
+.getElementById("inicio")
+.style.display="none";
+
+document
+.getElementById("carta")
+.style.display="block";
+
+document
+.getElementById("gatito")
+.style.display="block";
+
+},800)
+
+}
+
+const corazones=
+["💗","💕","💖","🌸"];
+
+for(let i=0;i<35;i++){
+
+let heart=
+document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML=
+
+corazones[
+Math.floor(
+Math.random()*
+corazones.length
+)
+];
+
+heart.style.left=
+Math.random()*100+"vw";
+
+heart.style.top=
+Math.random()*100+"vh";
+
+heart.style.animationDelay=
+Math.random()*4+"s";
+
+heart.style.fontSize=
+(18+
+Math.random()*20)+"px";
+
+document
+.getElementById("corazones")
+.appendChild(heart);
+
+
+}
+
+</script>
+
+</body>
+</html>
